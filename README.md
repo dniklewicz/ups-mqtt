@@ -12,10 +12,10 @@ If used with Synology UPS Network Server, please remember to add Docker's IP add
 `MQTT_HOST` - address of MQTT server\
 `MQTT_USERNAME` - MQTT username\
 `MQTT_PASSWORD` - MQTT password\
-`INTERVAL` - polling interval in seconds\
+`INTERVAL` - polling interval in seconds
 
 ## Networking
-If you want to get the same IP address for your docker container, you can create new docker network with limited address space:\
+If you want to get the same IP address for your docker container, you can create new docker network with limited address space:
 ```
 Subnet mask: 172.xx.0.0/30
 IP range: 172.xx.0.0/30
