@@ -5,7 +5,7 @@ RUN pip install --no-cache-dir paho-mqtt
 
 ADD ups-mqtt.py ./
 
-ENV MQTT_TOPIC=home/ups/
+ENV MQTT_TOPIC=home/ups
 ENV UPS_HOST=localhost
 ENV MQTT_HOST=localhost
 ENV MQTT_USERNAME=
