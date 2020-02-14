@@ -15,11 +15,12 @@ If used with Synology UPS Network Server, please remember to add Docker's IP add
 `INTERVAL` - polling interval in seconds
 
 ## Networking
-If you want to get the same IP address for your docker container, you can create new docker network with limited address space:
+If you want to get the same IP address for your docker container between restarts, you can create new docker network with limited address space:
 ```
 Subnet mask: 172.xx.0.0/30
 IP range: 172.xx.0.0/30
 Gateway: 172.xx.0.1
 ```
+Then your container should use address `172.xx.0.2`.
 
 Use at your own risk. No warranty provided.
