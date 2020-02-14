@@ -15,6 +15,7 @@ if not base_topic.endswith('/'):
 
 ups_host = os.environ['UPS_HOST']
 mqtt_host = os.environ['MQTT_HOST']
+mqtt_port = int(os.environ['MQTT_PORT'])
 mqtt_user = os.environ['MQTT_USERNAME']
 mqtt_password = os.environ['MQTT_PASSWORD']
 interval = int(os.environ['INTERVAL'])
@@ -40,8 +41,8 @@ def process():
         
         timestamp = time.time()
         msgs.append((base_topic + 'timestamp', timestamp, 0, True))
-        msgs.append((base_topic + 'lastUpdate', datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S'), 0, True))
-        mqtt.multiple(msgs, hostname=mqtt_host, auth={'username': mqtt_user, 'password': mqtt_password})
+        msgs.append((base_topic + 'lastUpdate', datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S %Z'), 0, True))
+        mqtt.multiple(msgs, hostname=mqtt_host, port=mqtt_port, auth={'username': mqtt_user, 'password': mqtt_password})
 
 
 
