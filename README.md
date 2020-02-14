@@ -10,6 +10,7 @@ If used with Synology UPS Network Server, please remember to add Docker's IP add
 `UPS_HOST` - address of NUT server\
 `MQTT_TOPIC` - base MQTT topic\
 `MQTT_HOST` - address of MQTT server\
+`MQTT_PORT` - MQTT server port\
 `MQTT_USERNAME` - MQTT username\
 `MQTT_PASSWORD` - MQTT password\
 `INTERVAL` - polling interval in seconds
