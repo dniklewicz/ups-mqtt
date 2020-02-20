@@ -7,18 +7,29 @@ import paho.mqtt.publish as mqtt
 import time
 from time import sleep, localtime, strftime
 import datetime
+from configparser import ConfigParser
+import shutil
+
+if not os.path.exists('config.ini'):
+    shutil.copy('data/config.ini', './config.ini')
+
+# Load configuration file
+config_dir = os.path.join(os.getcwd(), 'config.ini')
+config = ConfigParser(delimiters=('=', ), inline_comment_prefixes=('#'))
+config.optionxform = str
+config.read(config_dir)
 
 cached_values = {}
-base_topic = os.environ['MQTT_TOPIC']
+base_topic = config['MQTT'].get('base_topic', 'home/ups')
 if not base_topic.endswith('/'):
     base_topic += '/'
 
-ups_host = os.environ['UPS_HOST']
-mqtt_host = os.environ['MQTT_HOST']
-mqtt_port = int(os.environ['MQTT_PORT'])
-mqtt_user = os.environ['MQTT_USERNAME']
-mqtt_password = os.environ['MQTT_PASSWORD']
-interval = int(os.environ['INTERVAL'])
+ups_host = config['UPS'].get('hostname', 'localhost')
+mqtt_host = config['MQTT'].get('hostname', 'localhost')
+mqtt_port = config['MQTT'].getint('port', 1883)
+mqtt_user = config['MQTT'].get('username', None)
+mqtt_password = config['MQTT'].get('password', None)
+interval = config['General'].getint('interval', 60)
 
 def process():
     ups = subprocess.run(["upsc", "ups@" + ups_host], stdout=subprocess.PIPE)
