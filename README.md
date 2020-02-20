@@ -3,8 +3,8 @@
 Simple python tool for fetching data from NUT server and publishing output to MQTT server.\
 Can be used for UPS connected to Synology NAS with UPS Network Server Enabled.
 
-Configuration via configuration file `/opt/app/conf/config.ini`.\
-If used with Synology UPS Network Server, please remember to add Docker's IP address to the whitelist.
+Configuration via file `/opt/app/conf/config.ini`.\
+If used with Synology UPS Network Server, please remember to add container's IP address to the whitelist.
 
 ## Default configuration file:
 ```
