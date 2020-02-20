@@ -3,17 +3,35 @@
 Simple python tool for fetching data from NUT server and publishing output to MQTT server.\
 Can be used for UPS connected to Synology NAS with UPS Network Server Enabled.
 
-Configuration via docker's environment variables.\
+Configuration via configuration file `/opt/app/conf/config.ini`.\
 If used with Synology UPS Network Server, please remember to add Docker's IP address to the whitelist.
 
-## Environment variables:
-`UPS_HOST` - address of NUT server\
-`MQTT_TOPIC` - base MQTT topic\
-`MQTT_HOST` - address of MQTT server\
-`MQTT_PORT` - MQTT server port\
-`MQTT_USERNAME` - MQTT username\
-`MQTT_PASSWORD` - MQTT password\
-`INTERVAL` - polling interval in seconds
+## Default configuration file:
+```
+[UPS]
+# Address of NUT server
+#hostname=localhost
+
+[MQTT]
+# Base MQTT topic
+#base_topic=home/ups
+
+# Address of MQTT server
+#hostname=localhost
+
+# MQTT server port
+#port=1883
+
+# MQTT username
+#username=
+
+# MQTT password
+#password=
+
+[General]
+# Polling interval in seconds
+#interval=60
+```
 
 ## Networking
 If you want to get the same IP address for your docker container between restarts, you can create new docker network with limited address space:
