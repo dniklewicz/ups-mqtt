@@ -10,11 +10,11 @@ import datetime
 from configparser import ConfigParser
 import shutil
 
-if not os.path.exists('config.ini'):
-    shutil.copy('data/config.ini', './config.ini')
+if not os.path.exists('conf/config.ini'):
+    shutil.copy('config.ini', 'conf/config.ini')
 
 # Load configuration file
-config_dir = os.path.join(os.getcwd(), 'config.ini')
+config_dir = os.path.join(os.getcwd(), 'conf/config.ini')
 config = ConfigParser(delimiters=('=', ), inline_comment_prefixes=('#'))
 config.optionxform = str
 config.read(config_dir)
